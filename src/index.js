@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SeasonDisplay from './SeasonDisplay';
 
 /*const App = () => {
 
@@ -24,8 +25,10 @@ class App extends React.Component {
                 Lattitude {this.state.lat}
                 <br />
                 Error: {this.state.error}
-            </div>)
-       ;
+                <SeasonDisplay lat={this.state.lat}/>
+            </div>
+
+        );
    }
    componentDidMount() {
         console.log("mount")
