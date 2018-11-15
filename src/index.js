@@ -11,21 +11,38 @@ import ReactDOM from 'react-dom';
 }*/
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state={lat:null};
-
+    state = {lat:null, errorMessage:''};
+    //constructor(props) {
+        //console.log("constructor")
+        //super(props);
+        //this.state={lat:null, errorMessage: ''};
+    //}
+   render() {
+       console.log("render")
+       return(
+            <div>
+                Lattitude {this.state.lat}
+                <br />
+                Error: {this.state.error}
+            </div>)
+       ;
+   }
+   componentDidMount() {
+        console.log("mount")
         window.navigator.geolocation.getCurrentPosition(
             position => {
                 console.log(position)
                 this.setState({lat: position.coords.latitude})
             },
-            err => console.log(err)
+            err => { 
+                console.log(err) 
+                this.setState({errorMessage: err.message});
+            }
         );
-    }
-   render() {
+   }
 
-       return <div>Lattitude {this.state.lat}</div>;
+   componentDidUpdate() {
+       console.log("update")
    }
 }
 
